@@ -18,7 +18,7 @@ st.sidebar.header('User Input Features')
 selected_year = st.sidebar.selectbox('Year',list(reversed(range(1950,2020))))
 
 # Web scraping of NBA players stats
-@st.cache
+@st.cache_data
 def load_data(year):
     url = "https://www.basketball-reference.com/leagues/NBA_" + str(year) + "_per_game.html"
     html = pd.read_html(url,header=0)
@@ -59,10 +59,12 @@ if st.button('Intercorrelation Heatmap'):
     df_selected_team.to_csv('output.csv')
     df = pd.read_csv('output.csv')
     
+    df = df.select_dtypes(include=[float,int])
     corr = df.corr()
     mask = np.zeros_like(corr)
     mask[np.triu_indices_from(mask)] = True
     with sns.axes_style('white'):
         f,ax = plt.subplots(figsize=(7,5))
         ax = sns.heatmap(corr,mask=mask,vmax=1,square=True)
+    st.set_option('deprecation.showPyplotGlobalUse', False)
     st.pyplot()
