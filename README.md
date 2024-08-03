@@ -2,6 +2,8 @@
 
 Welcome to the **EDA Basketball App** machine learning project repository! This project focuses on performing exploratory data analysis on basketball data and implementing machine learning techniques for insights and predictions related to the sport.
 
+![3](https://github.com/user-attachments/assets/5aad1622-d636-49c0-b53e-c00688306d30)
+
 ## 📋 Contents
 
 - [Introduction](#introduction)
